@@ -1,0 +1,33 @@
+<label class="form-label fw-semibold text-secondary">
+    {{ label() }} @if (required()){ <span class="text-danger">*</span> } 
+</label>
+<div class="input-group position-relative" (click)="birthInput.showPicker()">
+    <input 
+        type="date" 
+        #birthInput 
+        class="form-control position-absolute opacity-0 hidden-date-input" 
+        [ngModel]="value"
+        (ngModelChange)="value = $event"
+        (change)="onDateChange($event)"
+        (blur)="onBlur()"
+        [disabled]="isDisabled"
+    />
+    
+    <input 
+        type="text" 
+        class="form-control shadow-none bg-white custom-text-input" 
+        [value]="formattedDate" 
+        placeholder="DD/MM/YYYY" 
+        readonly 
+    />
+
+    <span class="input-group-text bg-light text-muted calendar-addon">
+        <i class="bi bi-calendar3"></i>
+    </span>
+</div>
+
+@if (isInvalid) {
+    <div class="invalid-feedback d-block mt-1">
+        {{ errorMessage() }}
+    </div>
+}

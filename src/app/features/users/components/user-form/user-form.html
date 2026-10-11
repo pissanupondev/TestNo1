@@ -1,0 +1,164 @@
+<form [formGroup]="userForm" (ngSubmit)="onSave()" novalidate>
+  <div class="row g-3">
+    <div class="col-md-12 text-center mb-2">
+      <label for="firstName" class="form-label fw-semibold text-secondary">Profile</label>
+      <div class="profile-upload-container text-center rounded-4 position-relative transition-all">
+
+        @if (f.profile.value; as imagePreview) {
+        <div class="position-relative d-inline-block">
+          <img [src]="imagePreview" alt="Profile Preview"
+            class="rounded-3 object-fit-cover shadow-sm border border-2 border-white"
+            style="width: 120px; height: 120px;" />
+        </div>
+        <div class="mt-2">
+          <button type="button" class="btn btn-sm btn-outline-primary px-3" (click)="fileInput.click()">
+            <i class="bi bi-camera me-1"></i> Change Photo
+          </button>
+        </div>
+        }
+        @else {
+        <div class="py-2 cursor-pointer" (click)="fileInput.click()">
+          <div
+            class="avatar-placeholder rounded-3 bg-white shadow-sm d-inline-flex align-items-center justify-content-center mb-2 text-primary">
+            <i class="bi bi-cloud-arrow-up fs-3"></i>
+          </div>
+          <div class="small fw-medium text-secondary">Click to upload profile image</div>
+          <div class="text-muted extra-small">PNG, JPG, JPEG or WEBP (Max. 2MB)</div>
+        </div>
+        }
+        <input #fileInput type="file" class="d-none" (change)="onFileChange($event)" accept=".jpg,.jpeg,.png,.webp">
+      </div>
+
+      @if (f.profile.invalid && f.profile.touched) {
+      <div class="invalid-feedback d-block">
+        Please any select profile
+      </div>
+      }
+    </div>
+    <div class="col-md-6 mt-0">
+      <label for="firstName" class="form-label fw-semibold text-secondary">
+        First Name
+        <span class="text-danger">*</span>
+      </label>
+      <input type="text" id="firstName" class="form-control" formControlName="firstName" />
+      @if (f.firstName.invalid && f.firstName.touched) {
+      <div class="invalid-feedback d-block">Please enter your First Name</div>
+      }
+    </div>
+    <div class="col-md-6 mt-0">
+      <label for="lastName" class="form-label fw-semibold text-secondary">
+        Last Name
+        <span class="text-danger">*</span>
+      </label>
+      <input type="text" id="lastName" class="form-control" formControlName="lastName" />
+      @if (f.lastName.invalid && f.lastName.touched) {
+      <div class="invalid-feedback d-block">Please enter your Last Name</div>
+      }
+    </div>
+    <div class="col-md-6 mt-1">
+      <label for="email" class="form-label fw-semibold text-secondary">
+        Email
+        <span class="text-danger">*</span>
+      </label>
+      <input type="email" id="email" class="form-control" formControlName="email" />
+
+      @if (f.email.invalid && f.email.touched) {
+      <div class="invalid-feedback d-block">
+        @if (f.email.hasError('required')) {
+        Please enter your Email
+        } @else if (f.email.hasError('email')) {
+        Please provide a valid Email
+        }
+      </div>
+      }
+    </div>
+    <div class="col-md-6 mt-1">
+      <label for="phone" class="form-label fw-semibold text-secondary">
+        Phone
+        <span class="text-danger">*</span>
+      </label>
+      <input type="tel" id="phone" class="form-control" formControlName="phone" maxlength="10" appNumbersOnly />
+      @if (f.phone.invalid && f.phone.touched) {
+      <div class="invalid-feedback d-block">
+        @if (f.phone.hasError('required')) {
+        Please enter your Phone
+        } @else if (f.phone.hasError('pattern')) {
+        Please provide a valid Phone
+        }
+      </div>
+      }
+    </div>
+
+    <div class="col-md-6 mt-1">
+      <label for="occupation" class="form-label fw-semibold text-secondary">
+        Occupation <span class="text-danger">*</span>
+      </label>
+      <select id="occupation" class="form-select" formControlName="occupation">
+        <option [value]="''" disabled selected hidden>Select an occupation...</option>
+
+        @for (job of occupations(); track job) {
+        <option [value]="job">
+          {{ job }}
+        </option>
+        }
+      </select>
+
+      @if (f.occupation.invalid && f.occupation.touched) {
+      <div class="invalid-feedback d-block">Please select any Occupation</div>
+      }
+    </div>
+    <div class="col-md-6 mt-1">
+      <app-date-picker formControlName="birthDay" label="Birth Day" [required]="true" [submitted]="isSubmitted()"
+        errorMessage="Please provide a valid Birth Day"></app-date-picker>
+    </div>
+    <div class="col-12 mt-1">
+      <label class="form-label fw-semibold text-secondary">
+        Sex
+        <span class="text-danger">*</span>
+      </label>
+      <div class="gender-options">
+        <label class="gender-option">
+          <input type="radio" value="Male" formControlName="sex" />
+          <span class="gender-card">
+            <i class="bi bi-gender-male"></i>
+            <span>
+              <strong>Male</strong>
+            </span>
+          </span>
+        </label>
+        <label class="gender-option">
+          <input type="radio" value="Female" formControlName="sex" />
+          <span class="gender-card">
+            <i class="bi bi-gender-female"></i>
+            <span>
+              <strong>Female</strong>
+            </span>
+          </span>
+        </label>
+      </div>
+      @if (f.sex.invalid && f.sex.touched) {
+      <div class="invalid-feedback d-block">Please select Sex</div>
+      }
+    </div>
+
+    <div class="col-12 mt-4">
+      <div class="d-flex justify-content-center gap-3 w-100">
+        <button type="submit" class="btn btn-success px-4 py-2 rounded-3 shadow-sm border-0 fw-medium btn-modern"
+          [disabled]="isLoading()">
+
+          @if (isLoading()) {
+          <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+          } @else {
+          <i class="bi bi-check-lg me-2"></i>
+          }
+          Save
+        </button>
+
+        <button type="button" class="btn btn-light text-secondary px-4 py-2 rounded-3 border-0 fw-medium btn-modern"
+          [disabled]="isLoading()" (click)="onClear()">
+          <i class="bi bi-arrow-counterclockwise me-2"></i>Clear
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,59 +1,93 @@
 # TBWeb
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.0.
+โปรเจกต์ Frontend ที่พัฒนาด้วย **Angular 22.2.0** โดยใช้ Angular CLI สำหรับสร้างและจัดการโปรเจกต์
 
-## Development server
+## ข้อกำหนดเบื้องต้น
 
-To start a local development server, run:
+ก่อนเริ่มใช้งาน โปรดติดตั้งเครื่องมือต่อไปนี้
+
+* [Node.js](https://nodejs.org/)
+* npm (ติดตั้งมาพร้อมกับ Node.js)
+* Angular CLI
+
+ติดตั้ง Angular CLI ด้วยคำสั่ง:
+
+```bash
+npm install -g @angular/cli
+```
+
+## การติดตั้งโปรเจกต์
+
+ดาวน์โหลดหรือ Clone โปรเจกต์จาก GitHub จากนั้นเปิด Terminal ในโฟลเดอร์โปรเจกต์ แล้วติดตั้ง Dependencies:
+
+```bash
+npm install
+```
+
+## การรันโปรเจกต์ในโหมด Development
+
+เริ่มต้น Development Server ด้วยคำสั่ง:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+เมื่อ Server เริ่มทำงานแล้ว ให้เปิดเบราว์เซอร์และเข้าใช้งานที่:
 
-## Code scaffolding
+http://localhost:4200/
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+ระบบจะตรวจจับการเปลี่ยนแปลงของไฟล์ Source Code และโหลดแอปพลิเคชันใหม่โดยอัตโนมัติ
+
+## การสร้าง Component และไฟล์ต่าง ๆ
+
+Angular CLI รองรับการสร้าง Component, Directive, Pipe และไฟล์อื่น ๆ ผ่านคำสั่ง CLI
+
+ตัวอย่างการสร้าง Component:
 
 ```bash
 ng generate component component-name
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+หากต้องการดูคำสั่งและตัวเลือกทั้งหมดที่รองรับ สามารถใช้คำสั่ง:
 
 ```bash
 ng generate --help
 ```
 
-## Building
+## การ Build โปรเจกต์
 
-To build the project run:
+สร้างไฟล์สำหรับนำไปใช้งานด้วยคำสั่ง:
 
 ```bash
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+ไฟล์ที่ Build สำเร็จจะถูกจัดเก็บไว้ในโฟลเดอร์ `dist/` โดย Angular จะปรับแต่งไฟล์ตามการตั้งค่าของ Build Configuration เพื่อเพิ่มประสิทธิภาพในการทำงาน
 
-## Running unit tests
+## การทดสอบ Unit Test
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+โปรเจกต์รองรับการทดสอบ Unit Test ผ่าน Vitest สามารถรันทดสอบได้ด้วยคำสั่ง:
 
 ```bash
 ng test
 ```
 
-## Running end-to-end tests
+คำสั่งนี้ใช้สำหรับตรวจสอบการทำงานของโค้ดและช่วยลดข้อผิดพลาดระหว่างการพัฒนา
 
-For end-to-end (e2e) testing, run:
+## การทดสอบ End-to-End (E2E)
 
-```bash
-ng e2e
-```
+Angular CLI ไม่ได้ติดตั้ง Framework สำหรับ E2E Testing มาให้โดยอัตโนมัติ สามารถเลือกติดตั้ง Framework ที่เหมาะสมกับโปรเจกต์ได้
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+คำสั่งสำหรับเรียกใช้งาน E2E Test ขึ้นอยู่กับ Framework ที่ติดตั้งและการตั้งค่าของโปรเจกต์
 
-## Additional Resources
+## แหล่งข้อมูลเพิ่มเติม
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+* [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli)
+* [Angular Documentation](https://angular.dev/)
+* [Vitest Documentation](https://vitest.dev/)
+
+## หมายเหตุ
+
+* ตรวจสอบเวอร์ชันของ Node.js และ npm ให้ตรงตามข้อกำหนดของ Angular เวอร์ชันที่ใช้งาน
+* หลีกเลี่ยงการ Commit ข้อมูลสำคัญ เช่น API Keys, รหัสผ่าน และ Secret ต่าง ๆ ลงใน GitHub
+* ตรวจสอบการตั้งค่า API Endpoint ก่อน Build สำหรับนำไปใช้งานจริง

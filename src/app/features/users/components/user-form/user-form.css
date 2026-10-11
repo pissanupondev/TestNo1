@@ -1,0 +1,85 @@
+.gender-options {
+  display: flex;
+  gap: 12px;
+}
+
+.gender-option {
+  cursor: pointer;
+  margin: 0;
+}
+
+.gender-option input {
+  display: none;
+}
+
+.gender-card {
+  min-width: 100px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 4px;
+  border: 1px solid #dee2e6;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+.gender-card i {
+  font-size: 22px;
+  color: #6c757d;
+}
+
+.gender-card strong {
+  display: block;
+  font-size: 14px;
+}
+
+.gender-card small {
+  display: block;
+  color: #6c757d;
+  font-size: 12px;
+}
+
+.gender-option input:checked + .gender-card {
+  border-color: #0d6efd;
+  background: #eef5ff;
+  color: #0d6efd;
+  box-shadow: 0 0 0 2px rgba(13, 110, 253, 0.08);
+}
+
+.gender-option input:checked + .gender-card i {
+  color: #0d6efd;
+}
+
+.btn-modern {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-success.btn-modern:hover {
+  transform: translateY(-1px);
+  background-color: #146c43 !important;
+  box-shadow: 0 6px 16px rgba(25, 135, 84, 0.2) !important;
+}
+
+.btn-light.btn-modern{
+  background-color: #e9ecef !important;
+  color: #495057 !important;
+  transition: all 0.2s ease-in-out;
+}
+
+.profile-upload-container {
+  transition: all 0.2s ease-in-out;
+}
+
+.avatar-placeholder {
+  width: auto;
+  height: auto;
+  object-fit: cover;
+}
+
+.extra-small {
+  font-size: 0.75rem;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}

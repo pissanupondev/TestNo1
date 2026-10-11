@@ -38,12 +38,4 @@ export class AlertService {
       text: message
     });
   }
-
-  showErrorC(title: string, message = ''): void {
-    void this.Toast.fire({
-      icon: 'error',
-      title,
-      text: message
-    });
-  }
 }

@@ -16,9 +16,9 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
       const body = error.error as ApiErrorResponse | null;
 
       if (error.status === 0) {
-        alertService.showErrorC(
-          'Connection error',
-          'ไม่สามารถเชื่อมต่อเซิร์ฟเวอร์ได้'
+        alertService.showError(
+          'Connection Error',
+          'Unable to connect to the server.'
         );
 
         return throwError(() => error);
@@ -31,17 +31,16 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
       );
 
       if (error.status === 400 && validationMessages.length > 0) {
-        alertService.showErrorC(
-          body?.message ?? 'กรุณาตรวจสอบข้อมูล',
+        alertService.showError(
+          body?.message ?? 'Invalid input data',
           validationMessages.join('\n')
         );
 
         return throwError(() => error);
       }
 
-      
-      alertService.showErrorC(
-        body?.message ?? 'เกิดข้อผิดพลาด',
+      alertService.showError(
+        body?.message ?? 'An error occurred',
         `HTTP ${error.status}`
       );
 

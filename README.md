@@ -8,13 +8,6 @@
 
 * [Node.js](https://nodejs.org/)
 * npm (ติดตั้งมาพร้อมกับ Node.js)
-* Angular CLI
-
-ติดตั้ง Angular CLI ด้วยคำสั่ง:
-
-```bash
-npm install -g @angular/cli
-```
 
 ## การติดตั้งโปรเจกต์
 

@@ -7,8 +7,8 @@
         @if (f.profile.value; as imagePreview) {
         <div class="position-relative d-inline-block">
           <img [src]="imagePreview" alt="Profile Preview"
-            class="rounded-3 object-fit-cover shadow-sm border border-2 border-white"
-            style="width: 120px; height: 120px;" />
+            class="rounded-circle object-fit-cover shadow-sm border border-3 border-white"
+            style="width: 110px; height: 110px;" />
         </div>
         <div class="mt-2">
           <button type="button" class="btn btn-sm btn-outline-primary px-3" (click)="fileInput.click()">

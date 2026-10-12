@@ -9,10 +9,15 @@
 * [Node.js](https://nodejs.org/)
 * npm (ติดตั้งมาพร้อมกับ Node.js)
 
+
+Angular	Node.js	TypeScript	RxJS
+22.0.x	^22.22.3 || ^24.15.0 || ^26.0.0	>=6.0.0 <6.1.0	^6.5.3 || ^7.4.0
+
 ## การติดตั้งโปรเจกต์
 
 ดาวน์โหลดหรือ Clone โปรเจกต์จาก GitHub จากนั้นเปิด Terminal ในโฟลเดอร์โปรเจกต์ แล้วติดตั้ง Dependencies:
 
+ 
 ```bash
 npm install
 ```
